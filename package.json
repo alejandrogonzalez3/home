@@ -1,15 +1,17 @@
 {
-  "name": "developers-portfolio",
-  "description": "A personal static website/portfolio template hosted with GitHub Pages, built to showcase my recent projects.",
-  "homepage": "http://hashirshoaeb.com/home",
+  "name": "alejandrogonzalez3-portfolio",
+  "description": "My personal website-porfolio..",
+  "homepage": "http://alejandrogonzalez3.com/home",
   "version": "2.0.0",
   "private": true,
   "author": {
-    "name": "Hashir Shoaib",
-    "email": "hashirshoaeb@gmail.com",
-    "url": "https://github.com/hashirshoaeb"
+    "name": "Alejandro González",
+    "email": "alejandro.gonzalez3@udc.es",
+    "url": "https://github.com/alejandrogonzalez3"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/lab": "^4.0.0-alpha.57",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.2",
     "gh-pages": "^2.2.0",
@@ -24,7 +26,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.4",
     "react-typist": "^2.0.5",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "moment": "^2.29.3"
   },
   "scripts": {
     "predeploy": "npm run build",

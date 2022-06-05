@@ -1,104 +1,96 @@
-import React, { Component } from "react";
+import React, { useEffect, useReducer, useCallback } from "react";
 import Axios from "axios";
 import ShowBlog from "./ShowBlog";
 import { Spinner } from "react-bootstrap";
-import {
-    Container,
-    Row,
-    Jumbotron
-} from "react-bootstrap";
+import { Container, Row, Jumbotron } from "react-bootstrap";
 
+const initialState = {
+  profile: {
+    ptitle: "",
+    name: "",
+    avtar: "",
+    profileurl: "",
+  },
+  items: [],
+  isloading: true,
+  error: null,
+};
 
-export class Blog extends Component {
-  constructor(props) {
-    super(props);
+const reducer = (state, { type, payload }) => {
+  switch (type) {
+    case "error":
+      return {
+        error: payload,
+        ...initialState,
+      };
+    case "fetchEnded":
+      return {
+        ...state,
+        isloading: false,
+        items: payload.posts,
+        profile: payload.profile,
+      };
 
-    this.state = {
-      profile: {
-        ptitle: "",
-        name: "",
-        avtar: "",
-        profileurl: "",
-      },
-      item: [],
-      isloading: true,
-      error: null
-    };
+    default:
+      return { ...state };
   }
-  mediumURL =
-    "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@alejandro.gonzalez3";
+};
 
-  componentDidMount() {
-    Axios.get(this.mediumURL)
+export const Blog = () => {
+  const [{ profile, items, isloading, error }, dispatch] = useReducer(reducer, initialState);
 
-      .then((data) => {
-        const avatar = data.data.feed.image;
-        const profileLink = data.data.feed.link;
-        const res = data.data.items; //This is an array with the content. No feed, no info about author etc..
-        const posts = res.filter(item => item.categories.length > 0);
+  const mediumURL = "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@alejandro.gonzalez3";
 
-        const title = data.data.feed.title;
+  /* eslint-disable react-hooks/exhaustive-deps */
+  const fetchMyAPI = useCallback(async () => {
+    const data = await Axios.get(mediumURL);
+    const avatar = data.data.feed.image;
+    const profileLink = data.data.feed.link;
+    const res = data.data.items;
+    const posts = res.filter((item) => item.categories.length > 0);
+    const title = data.data.feed.title;
 
-        this.setState(
-          (pre) => ({
-            profile: {
-              ...pre.profile,
-              ptitle: title,
-              profileurl: profileLink,
-              avtar: avatar,
+    dispatch({
+      type: "fetchEnded",
+      payload: { profile: { ...profile, ptitle: title, profileurl: profileLink, avtar: avatar }, posts: posts },
+    });
 
-            },
-            item: posts,
-            isloading: false
-          }),
-          () => {
-            console.log(this.state);
-          }
-        );
-        console.log(data, res);
-      })
-      .catch((e) => {
-        this.setState({ error: e.toJSON() })
-        console.log(e);
+  }, []);
+
+  useEffect(() => {
+    fetchMyAPI().catch((e) => {
+      dispatch({
+        type: "error",
+        payload: e.toJSON(),
       });
-  }
-  render() {
-   
-    let post
+    });
+  }, [fetchMyAPI]);
 
-    if (this.state.item) {
-      post = this.state.item.map((post, index) => (
-        <ShowBlog key={index} {...post} {...this.state.profile} {...index} />
-      ))
-    }
-    if (this.state.isloading) {
-      post = <Spinner />
-    }
-    if (this.state.error) {
-      let error = this.state.error.code ? this.state.error.code : this.state.error.name;
-      let errorMsg = this.state.error.message;
-      post = (
-        <>
-          <h2 className="red center1">{error}</h2>
-          <p className="errorMessage center1">{errorMsg}</p>
-        </>
-      );
-    }
+  if (isloading) {
+    return <Spinner />;
+  }
+  if (error) {
     return (
-        <section id="experiences" className="section">
-        <Container>
-            <Jumbotron fluid className="bg-white">
-                <h2 className="display-4 mb-5 text-center">
-                    Medium
-                </h2>
-                <Row>
-                {post}
-                </Row>
-            </Jumbotron>
-        </Container>
-    </section>
+      <>
+        <h2 className="red center1">{error.code ? error.code : error.name}</h2>
+        <p className="errorMessage center1">{error.message}</p>
+      </>
     );
   }
-}
+  return (
+    <section id="experiences" className="section">
+      <Container>
+        <Jumbotron fluid className="bg-white">
+          <h2 className="display-4 mb-5 text-center">Medium</h2>
+          <Row>
+            {items.map((post, index) => (
+              <ShowBlog key={index} {...post} {...profile} {...index} />
+            ))}
+          </Row>
+        </Jumbotron>
+      </Container>
+    </section>
+  );
+};
 
 export default Blog;

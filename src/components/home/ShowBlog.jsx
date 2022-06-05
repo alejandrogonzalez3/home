@@ -1,14 +1,15 @@
 import React from "react";
 import moment from "moment";
 import { makeStyles } from "@material-ui/core";
-import { Link, withRouter } from "react-router-dom";
 
 const toText = (node) => {
-        let tag = document.createElement("div");
-        tag.innerHTML = node;
-        node = tag.innerText;
-        return node;
-}
+  let tag = document.createElement("div");
+  tag.innerHTML = node;
+  tag.removeChild(tag.getElementsByTagName("figure")[0]);
+  node = tag.innerText;
+
+  return node;
+};
 
 const useStyles = makeStyles(() => ({
   cardsmall: {
@@ -23,8 +24,6 @@ const useStyles = makeStyles(() => ({
     borderRadius: ".25rem",
     boxShadow:
       "0 2px 0 rgba(90, 97, 105, 0.11), 0 4px 8px rgba(90, 97, 105, 0.12), 0 10px 10px rgba(90, 97, 105, 0.06), 0 7px 70px rgba(90, 97, 105, 0.1)",
-    // border: "none",
-    // borderRadius: "0.625rem",
   },
   cardpost__image: {
     position: "relative",
@@ -107,16 +106,16 @@ const ShowBlog = (props) => {
               target="_blank"
               style={{ backgroundImage: `url(${props.avtar})` }}
             >
-              Written By Mehul
+              Medium image
             </a>
           </div>
         </div>
 
         <div className="card-body">
           <h5 className="card-title">
-            <Link to={props.title} className={c.textfiordblue}>
+            <a className={c.textfiordblue} href={props.link} target="_blank" rel="noopener noreferrer">
               {props.title}
-            </Link>
+            </a>
           </h5>
 
           <p className={c.cardText}>{`${toText(props.description.substring(0, 1000))}...`}</p>
@@ -164,4 +163,4 @@ const ShowBlog = (props) => {
   );
 };
 
-export default withRouter(ShowBlog);
+export default ShowBlog;

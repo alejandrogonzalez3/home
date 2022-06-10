@@ -13,45 +13,31 @@ const mainBody = {
   icons: [
     {
       image: "fa-github",
-      url: "https://github.com/hashirshoaeb",
+      url: "https://github.com/alejandrogonzalez3",
     },
     {
       image: "fa-facebook",
-      url: "https://www.facebook.com/hashirshoaeb",
-    },
-    {
-      image: "fa-instagram",
-      url: "https://www.instagram.com/hashirshoaeb/",
+      url: "https://www.facebook.com/alextabagon",
     },
     {
       image: "fa-linkedin",
-      url: "https://www.linkedin.com/in/hashirshoaeb/",
+      url: "https://www.linkedin.com/in/alejandro-gonzalez-martinez/",
     },
     {
       image: "fa-twitter",
-      url: "https://www.twitter.com/hashirshoaeb/",
+      url: "https://www.twitter.com/alextabagon17/",
     },
   ],
 };
 
 // ABOUT SECTION
-// If you want the About Section to show a profile picture you can fill the profilePictureLink either with:
-//a) your Instagram username
-//      i.e:profilePictureLink:"johnDoe123",
-//b) a link to an hosted image
-//      i.e:profilePictureLink:"www.picturesonline.com/johnDoeFancyAvatar.jpg",
-//c) image in "editable-stuff" directory and use require("") to import here,
-//      i.e: profilePictureLink: require("../editable-stuff/hashirshoaeb.png"),
-//d) If you do not want any picture to be displayed, just leave it empty :)
-//      i.e: profilePictureLink: "",
-
 const about = {
   show: true,
   heading: "About Me",
   imageLink: require("../editable-stuff/alejandrogonzalez.png"),
   imageSize: 375,
   message:
-    "Knowledge lover and new technologies discoverer. Master degree in Computer Engineering from the University of La Coruña. I appreciate always going out of my comfort zone in search of new challenges, always trying to reach the top giving the best of me.",
+    "Knowledge lover and new technologies discoverer. Master degree in Computer Engineering from the University of A Coruña. I appreciate always going out of my comfort zone in search of new challenges, always trying to reach the top giving the best of me.",
 };
 
 // PROJECTS SECTION
@@ -62,9 +48,9 @@ const about = {
 const repos = {
   show: true,
   heading: "Recent Projects",
-  gitHubUsername: "alejandrogonzalez3", //i.e."johnDoe12Gh"
-  reposLength: 4,
-  specificRepos: [],
+  gitHubUsername: "alejandrogonzalez3",
+  reposLength: 0,
+  specificRepos: ["fishCare", "fishCare-backend", "fishCare-scripts", "home"],
 };
 
 // SKILLS SECTION
@@ -72,24 +58,20 @@ const skills = {
   show: true,
   heading: "Skills",
   hardSkills: [
-    { name: "Python", value: 90 },
-    { name: "SQL", value: 75 },
-    { name: "Data Structures", value: 85 },
-    { name: "C/C++", value: 65 },
     { name: "JavaScript", value: 90 },
-    { name: "React", value: 65 },
-    { name: "HTML/CSS", value: 55 },
-    { name: "C#", value: 80 },
+    { name: "React", value: 90 },
+    { name: "HTML/CSS", value: 90 },
+    { name: "Android", value: 70 },
+    { name: "SQL", value: 75 },
+    { name: "Java", value: 95 },
   ],
   softSkills: [
-    { name: "Goal-Oriented", value: 80 },
     { name: "Collaboration", value: 90 },
-    { name: "Positivity", value: 75 },
-    { name: "Adaptability", value: 85 },
-    { name: "Problem Solving", value: 75 },
+    { name: "Goal-Oriented", value: 70 },
+    { name: "Positivity", value: 80 },
+    { name: "Adaptability", value: 95 },
+    { name: "Problem Solving", value: 90 },
     { name: "Empathy", value: 90 },
-    { name: "Organization", value: 70 },
-    { name: "Creativity", value: 90 },
   ],
 };
 
@@ -98,8 +80,8 @@ const getInTouch = {
   show: true,
   heading: "Get In Touch",
   message:
-    "I'm currently looking for full-time Software Engineering or Machine Learning opportunities! If you know of any positions available, if you have any questions, or if you just want to say hi, please feel free to email me at",
-  email: "hashirshoaeb@gmail.com",
+    "I always have my ears open to new offers! If you know of any positions available, if you have any questions, or if you just want to say hi, please feel free to email me at",
+  email: "alejandro.gonzalez3@udc.es",
 };
 
 const experiences = {
@@ -107,14 +89,14 @@ const experiences = {
   heading: "Experiences",
   data: [
     {
-      role: 'Software Engineer',// Here Add Company Name
+      role: 'Software Engineer',
       companylogo: require('../assets/img/nomasystems.png'),
-      date: 'June 2018 – Present',
+      date: 'January 2020 - April 2020',
     },
     {
       role: 'Front-End Developer',
       companylogo: require('../assets/img/trabe.png'),
-      date: 'May 2017 – May 2018',
+      date: 'September 2020 - Present',
     },
   ]
 }

@@ -11,13 +11,13 @@ import {
 } from "./editable-stuff/config.js";
 import MainBody from "./components/home/MainBody";
 import AboutMe from "./components/home/AboutMe";
-import Project from "./components/home/Project";
+import Project from "./components/home/project/Project";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
-import Skills from "./components/home/Skills";
+import Skills from "./components/home/skills/Skills";
 import GetInTouch from "./components/home/GetInTouch.jsx";
-import Experience from "./components/home/Experience";
-import Blog from "./components/home/Blog.jsx";
+import Experience from "./components/home/experience/Experience";
+import Blog from "./components/home/blog/Blog.jsx";
 
 const Home = React.forwardRef((_props, ref) => {
   return (

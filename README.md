@@ -33,13 +33,3 @@ This project is open source and it's created using the code of Hashir Shoaib [Ho
    ```https
      https://<your-username>.github.io/home
    ```
-
-5. To change the thumbnail image:
-
-    - Navigate to the "public" folder.  
-    - There you will see "social-image.png".  
-    - Delete it.   
-    - Take a screenshot of your version and rename it "social-image.png" and place it there.  
-    
-   Next time if you make changes, repeat from step 8.
-

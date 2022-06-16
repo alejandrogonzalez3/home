@@ -26,7 +26,7 @@ This project is open source and it's created using the code of Hashir Shoaib [Ho
     npm run deploy
    ```
 
-   Or for deployment at \<username>.github.io, refer [READMEdocs/custom-deployment.md](./READMEdocs/custom-deployment.md) and [pages.js](./pages.js)
+   Or for deployment at \<username>.github.io, refer [READMEdocs/custom-deployment.md](./custom-deployment.md) and [pages.js](./pages.js)
 
 4. Congrats your site is up and running. To see it live, visit:
 

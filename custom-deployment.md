@@ -36,5 +36,3 @@
     ```https
       https://<your-username>.github.io
     ```
-
-Facing issues? Feel free to contact at hashirshoaeb@gmail.com.
